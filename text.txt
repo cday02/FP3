@@ -1,0 +1,10 @@
+use filter to randomize items.
+
+display images from api to mainpage in paper.
+
+
+research sytle.
+
+think of features.
+
+start looking at stripe.
