@@ -26,18 +26,19 @@ export default class Skins extends React.Component {
  }
 
  handleFormSubmit = event => {
-   event.preventDefault();
-   let id = event.target.id;
-   API.saveItem({
-     marketname: this.state.posts.market_name,
-     rarity: this.state.posts.border_color,
-     nameid: this.state.posts.name_id,
-    //  avgprice: this.state.posts.prices.mean,
-    //  safeprice: this.state.posts.prices.safe
-    })
-    .then(res => alert(`${res.data.marketname} has been added to cart`))
-    .catch(err => console.log(err));
-  event.target.hidden = true; 
+  alert('value' + this.state.value)
+  //  event.preventDefault();
+  //  let id = event.target.id;
+  //  API.saveItem({
+  //    marketname: this.state.posts.market_name,
+  //    rarity: this.state.posts.border_color,
+  //    nameid: this.state.posts.name_id,
+  //   //  avgprice: this.state.posts.prices.mean,
+  //   //  safeprice: this.state.posts.prices.safe
+  //   })
+  //   .then(res => alert(`${res.data.marketname} has been added to cart`))
+  //   .catch(err => console.log(err));
+  // event.target.hidden = true; 
  }
  
  componentDidMount(){ 
