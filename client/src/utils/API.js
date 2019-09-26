@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'http://localhost:3001/';
 
 export default {
   // Gets all Items
@@ -17,6 +17,10 @@ export default {
   },
   // Saves a item to the database
   saveItem: function(itemData) {
-    return axios.post("/api/items", itemData);
+    console.log("DATA: " +JSON.stringify(itemData, null, 2));
+    let data = JSON.stringify(itemData, null, 2);
+    return axios.post("/api/items", data, {
+                headers: { "Content-Type" : "application/json"}
+           });
   }
 };

@@ -46,7 +46,7 @@ export default class Skins extends React.Component {
    API.saveItem({
       marketname: this.state.posts.market_name,
       rarity: this.state.posts.border_color,
-      nameid: this.state.posts.nameID,
+      nameid: this.state.posts.nameID
      //  avgprice: this.state.posts.prices.mean,
      //  safeprice: this.state.posts.prices.safe
      })
