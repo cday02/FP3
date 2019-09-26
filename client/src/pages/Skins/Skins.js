@@ -43,13 +43,11 @@ export default class Skins extends React.Component {
     }
 
   console.log('adding item: ' + nameID)
-   API.saveItem({
-      marketname: market_name,
-      rarity: border_color,
-      nameid: nameID
-     //  avgprice: this.state.posts.prices.mean,
-     //  safeprice: this.state.posts.prices.safe
-     })
+  API.saveItem({
+    marketname: market_name,
+    rarity: border_color,
+    nameid: nameID
+})
      .then(res => alert(`${res.data.marketname} has been added to cart`))
      .catch(err => console.log(err));
   // event.target.hidden = true; 
@@ -78,7 +76,7 @@ export default class Skins extends React.Component {
             <div className="card-content">
             <SaveBtn
                  
-               id={posts.nameID}
+               id={post.nameID}
                onClick={this.handleFormSubmit}
                hidden={false}
               >Add to Cart</SaveBtn>
