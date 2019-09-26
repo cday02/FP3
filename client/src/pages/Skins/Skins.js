@@ -27,7 +27,7 @@ export default class Skins extends React.Component {
 
  handleFormSubmit = event => {
     event.preventDefault();
-    let id = event.target;
+    let id = event.target.id;
     let market_name = "";
     let border_color = "";
     let nameID = "";
@@ -44,9 +44,9 @@ export default class Skins extends React.Component {
 
   console.log('adding item: ' + nameID)
    API.saveItem({
-      marketname: this.state.posts.market_name,
-      rarity: this.state.posts.border_color,
-      nameid: this.state.posts.nameID
+      marketname: market_name,
+      rarity: border_color,
+      nameid: nameID
      //  avgprice: this.state.posts.prices.mean,
      //  safeprice: this.state.posts.prices.safe
      })
