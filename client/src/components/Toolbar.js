@@ -4,19 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Hidden from '@material-ui/core/Hidden';
 import {Link} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import { link } from 'fs';
 
 
 
@@ -94,24 +85,24 @@ const useStyles = makeStyles(theme => ({
   const sections = [
     {name:'Home', route:'/'},
     {name:'Skins', route:'/skins'},
-    {name:'Inventory', route:'/inventory'},
+    {name:'Cart', route:'/inventory'},
     {name:'Contact', route:'/contact'},
-    {name:'About', route:'/about'},
+    {name:'Github', route:'/about'},
   
   ];
   
-  const featuredPosts = [
-    {
-      title: 'Featured post',
-      description:
-        'Test',
-    },
-    {
-      title: 'Post title',
-      description:
-        'testing',
-    },
-  ];
+  // const featuredPosts = [
+  //   {
+  //     title: 'Featured post',
+  //     description:
+  //       'Test',
+  //   },
+  //   {
+  //     title: 'Post title',
+  //     description:
+  //       'testing',
+  //   },
+  // ];
 
   export default function Blog() {
     const classes = useStyles();
@@ -138,7 +129,7 @@ const useStyles = makeStyles(theme => ({
             <IconButton>
               <SearchIcon />
             </IconButton>
-            <Button variant="outlined" size="small">
+            <Button variant="outlined" size="small" href="https://store.steampowered.com/login/">
               Sign up
             </Button>
           </Toolbar>

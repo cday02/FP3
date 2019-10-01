@@ -12,8 +12,10 @@ export default {
     return axios.get("/api/items/" + id);
   },
   // Deletes the item with the given id
-  deleteItem: function(id) {
-    return axios.delete("/api/items/" + id);
+  deleteItem: function(itemData) {
+    console.log('DATA:' +JSON.stringify(itemData, null, 2));
+    let data = JSON.stringify(itemData, null, 2);
+    return axios.delete("/api/items/", data);
   },
   // Saves a item to the database
   saveItem: function(itemData) {

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import API from "../../utils/API"
-import SteamAPI from "../../utils/SteamAPI";
 import axios from "axios";
 import { SaveBtn } from "../../Form"
+import {  Container } from "@material-ui/core"
 export default class Skins extends React.Component {
 
   state={
@@ -31,13 +31,15 @@ export default class Skins extends React.Component {
     let market_name = "";
     let border_color = "";
     let nameID = "";
+    let image = ""
 
     for(var key in this.state.posts) {
       console.log("key:" + this.state.posts[key].nameID);
-      if(this.state.posts[key].nameID == id) {
+      if(this.state.posts[key].nameID === id) {
         market_name = this.state.posts[key].market_name;
         nameID = this.state.posts[key].nameID;
         border_color = this.state.posts[key].border_color;
+        image = this.state.posts[key].image
         break;
       }
     }
@@ -46,7 +48,8 @@ export default class Skins extends React.Component {
   API.saveItem({
     marketname: market_name,
     rarity: border_color,
-    nameid: nameID
+    nameid: nameID,
+    image: image
 })
      .then(res => alert(`${res.data.marketname} has been added to cart`))
      .catch(err => console.log(err));
@@ -62,15 +65,11 @@ export default class Skins extends React.Component {
    const postList = posts.length ? (
      posts.map(post => {
        return(
-         
+        <Container style={{backgroundImage: "https://battaliongame.com/static/082faceac2114de7eb572bc13aba5084/a745b/dlc-eastern_front.jpg"}}>
          <div className="post card"
-           style={{
-             position: "flex",
-             width:300,
-                   }}
            key={post._id}>
             <img
-              style={{width: 200, height: 150}}
+              style={{width: 200, height: 150, marginLeft: 500}}
               src={post.image}
               alt="this cannot display" />
             <div className="card-content">
@@ -80,11 +79,13 @@ export default class Skins extends React.Component {
                onClick={this.handleFormSubmit}
                hidden={false}
               >Add to Cart</SaveBtn>
-             <div className="card-title">{post.market_name}</div>
-             <p>Price: ${post.prices.mean}</p>
+             <div className="card-title" style={{marginLeft: 500}}>{post.market_name}</div>
+             <p style={{marginLeft: 500}}>Price: ${post.prices.mean}</p>
            </div> 
            
          </div>
+         
+         </Container>
 
        )
      }
@@ -93,7 +94,8 @@ export default class Skins extends React.Component {
      <div className="center">Loading...</div>)
      return(
      <div className="post card">
-       <h4 className="center">
+       <h4 className="center"
+        style={{marginLeft: 750}}>
          Available Skins
        </h4>
        {postList}
