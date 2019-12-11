@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { SaveBtn, DeleteBtn } from "../../Form";
+import StripeCheckout from "react-stripe-checkout";
 
 class Inventory extends Component {
   state = {
@@ -11,6 +12,17 @@ class Inventory extends Component {
     this.loadItems();
   }
 
+  onToken = token => {
+    fetch("/save-stripetoken", {
+      method: "POST",
+      body: JSON.stringify(token)
+    }).then(response => {
+      response.json().then(data => {
+        alert("We are in business!");
+      });
+    });
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
     let id = event.target.id;
@@ -18,6 +30,7 @@ class Inventory extends Component {
     let border_color = "";
     let nameID = "";
     let image = "";
+    let price = "";
 
     for (var key in this.state.items) {
       console.log("key:" + this.state.items[key].nameID);
@@ -26,6 +39,7 @@ class Inventory extends Component {
         nameID = this.state.items[key].nameID;
         border_color = this.state.items[key].border_color;
         image = this.state.items[key].image;
+        price = this.state.items[key].prices.mean;
         break;
       }
     }
@@ -91,7 +105,7 @@ class Inventory extends Component {
                 {item.marketname}
               </div>
               <div style={{ textAlign: "center" }} className="price-title">
-                {item.price}
+                ${item.price}
               </div>
             </div>
             {console.log(this.state.items)}
@@ -105,7 +119,12 @@ class Inventory extends Component {
       <div className="post card">
         <h4 className="center">Your Cart</h4>
         {itemList}
-        <SaveBtn>Check out</SaveBtn>
+        <StripeCheckout
+          token={this.onToken}
+          stripeKey="pk_test_BnWgdp4EtVIWDcp5ai5gtGK400qUA8bdXu"
+          currency="USD"
+          amount={items.price}
+        ></StripeCheckout>
       </div>
     );
   }
